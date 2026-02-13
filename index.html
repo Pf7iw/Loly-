@@ -6,59 +6,78 @@
 <title>لولي ❤️</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
 
 body{
-background:linear-gradient(180deg,#7a001e,#c4003a);
+background:linear-gradient(180deg,#5e0019,#b3003c);
 color:white;
-text-align:center;
-overflow-x:hidden;
+scroll-behavior:smooth;
 }
 
-/* صفحة الدخول */
-.login{
+/* صفحة الباسورد */
+#login{
 height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-animation:fadeIn 2s ease;
+text-align:center;
 }
 
-.heart{
-font-size:120px;
-animation:pulse 1.5s infinite;
+#login h1{
+font-size:28px;
+margin-bottom:20px;
 }
 
 input{
-padding:10px;
-border-radius:20px;
+padding:12px;
+border-radius:25px;
 border:none;
 text-align:center;
-margin-top:15px;
+width:220px;
+margin-bottom:15px;
 }
 
 button{
-margin-top:10px;
-padding:10px 25px;
+padding:12px 30px;
 border:none;
-border-radius:20px;
-background:#ff4d88;
+border-radius:25px;
+background:#ff2e74;
 color:white;
 cursor:pointer;
+font-size:16px;
+transition:0.3s;
+}
+
+button:hover{
+background:#ff4f8f;
 }
 
 .hidden{display:none;}
 
-/* الصفحة الرئيسية */
+/* الأقسام */
 .section{
-padding:50px 20px;
-animation:fadeIn 2s ease;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
+text-align:center;
 }
 
 .section h2{
+font-size:30px;
 margin-bottom:20px;
-font-size:26px;
+}
+
+.card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+padding:30px;
+border-radius:20px;
+max-width:500px;
+box-shadow:0 0 30px rgba(255,0,80,0.3);
 }
 
 .message{
@@ -67,34 +86,24 @@ line-height:1.8;
 }
 
 .counter{
-font-size:20px;
+font-size:22px;
 margin-top:15px;
 }
 
 .love-img{
-margin-top:20px;
-max-width:300px;
+width:100%;
+max-width:320px;
 border-radius:20px;
+margin-top:20px;
 box-shadow:0 0 25px rgba(255,0,80,0.6);
 }
 
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.2);}
-100%{transform:scale(1);}
-}
-
-@keyframes fadeIn{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-/* قلوب تطير */
-.flying-heart{
+/* قلوب بالخلفية */
+.heart{
 position:fixed;
-bottom:-20px;
-color:#ffb6c1;
-animation:float 6s linear infinite;
+bottom:-10px;
+color:#ff6fa5;
+animation:float 7s linear infinite;
 }
 
 @keyframes float{
@@ -106,68 +115,70 @@ animation:float 6s linear infinite;
 
 <body>
 
-<div class="login" id="login">
-<div class="heart">❤️</div>
-<h2>لولي الي بحبها بس مجننيتني</h2>
+<!-- صفحة الباسورد -->
+<div id="login">
+<h1>لولي الي بحبها بس مجننيتني ❤️</h1>
 <p>اكتبي اسم بنتنا</p>
 <input type="password" id="pass">
-<button onclick="checkPass()">دخول 💕</button>
+<button onclick="enterSite()">دخول 💕</button>
 </div>
 
-<div id="main" class="hidden">
+<div id="site" class="hidden">
 
 <!-- فقرة الأغنية -->
-<div class="section">
-<h2>🎵 أغنيتنا</h2>
+<section class="section">
+<h2>🎵 عيد الحب – سلطان خليفة</h2>
+<div class="card">
+<p>الله يخليلي ياكي ولا يحرمني منك أم روز ❤️<br>
+كل لحظة بحياتنا معاك أحلى من اللي قبلها 💖<br>
+كل عام وانتي فرحتي وقلبي وروحي 🌹</p>
 <audio id="music" autoplay loop>
-<source src="PUT_YOUR_MP3_LINK_HERE.mp3" type="audio/mpeg">
+<source src="song.mp3" type="audio/mpeg">
 </audio>
-<p>إذا ما اشتغلت لحالها اضغطي بأي مكان ❤️</p>
+<p>إذا ما اشتغلت اضغطي على أي مكان ❤️</p>
 </div>
+</section>
 
 <!-- فقرة الرسالة -->
-<div class="section">
+<section class="section">
 <h2>💌 رسالتي إلك</h2>
-<div class="message">
-كل عام وانتي عيدي ❤️ <br>
-وكل عام وانتي حبي ❤️ <br>
-وكل عام وانتي نبض قلبي وروحي ودنيتي كلها 💕 <br>
-وجودك بحياتي هو أجمل هدية من رب العالمين 💖
+<div class="card message">
+كل عام وانتي عيدي ❤️ <br><br>
+وكل عام وانتي حبي ❤️ <br><br>
+وكل سنة وانتي دنيتي كلها ونبض قلبي 💕 <br><br>
+وجودك بحياتي هو أجمل هدية من رب العالمين 💖 <br><br>
+الله يخليلي ياكي ولا يحرمني منك يا أم روز ❤️
 </div>
-</div>
+</section>
 
 <!-- فقرة العداد -->
-<div class="section">
-<h2>⏳ من بداية حبنا</h2>
-<div class="counter" id="counter"></div>
-</div>
+<section class="section">
+<h2>⏳ من بداية علاقتنا</h2>
+<div class="card counter" id="counter"></div>
+</section>
 
 <!-- فقرة الصورة -->
-<div class="section">
+<section class="section">
 <h2>احبك يا دنيتي كلها ❤️</h2>
+<div class="card">
 <img src="love.jpg" class="love-img">
 </div>
+</section>
 
 </div>
 
 <script>
 
-function checkPass(){
-var password=document.getElementById("pass").value;
-if(password==="روز"){
+function enterSite(){
+var p=document.getElementById("pass").value;
+if(p==="روز"){
 document.getElementById("login").classList.add("hidden");
-document.getElementById("main").classList.remove("hidden");
+document.getElementById("site").classList.remove("hidden");
 document.getElementById("music").play();
 }else{
-alert("غلط يا قلبي 😏");
+alert("غلط يا قلبي ❤️");
 }
 }
-
-/* تشغيل عند أول لمس */
-document.body.addEventListener("click",function(){
-var music=document.getElementById("music");
-if(music) music.play();
-},{once:true});
 
 /* عداد من 16/6/2025 */
 var startDate=new Date("June 16, 2025 00:00:00").getTime();
@@ -175,25 +186,25 @@ setInterval(function(){
 var now=new Date().getTime();
 var diff=now-startDate;
 
-var days=Math.floor(diff/(1000*60*60*24));
-var hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-var minutes=Math.floor((diff%(1000*60*60))/(1000*60));
-var seconds=Math.floor((diff%(1000*60))/1000);
+var d=Math.floor(diff/(1000*60*60*24));
+var h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+var m=Math.floor((diff%(1000*60*60))/(1000*60));
+var s=Math.floor((diff%(1000*60))/1000);
 
 document.getElementById("counter").innerHTML=
-days+" يوم "+hours+" ساعة "+minutes+" دقيقة "+seconds+" ثانية ❤️";
+d+" يوم "+h+" ساعة "+m+" دقيقة "+s+" ثانية ❤️";
 },1000);
 
 /* قلوب تطير */
 setInterval(function(){
 var heart=document.createElement("div");
-heart.className="flying-heart";
+heart.className="heart";
 heart.innerHTML="💗";
 heart.style.left=Math.random()*100+"vw";
 heart.style.fontSize=(Math.random()*20+15)+"px";
 document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
-},500);
+setTimeout(()=>heart.remove(),7000);
+},800);
 
 </script>
 
