@@ -3,37 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>لولي ❤️</title>
+<title>دخول ❤️</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
-
 body{
-background:linear-gradient(180deg,#5e0019,#b3003c);
-color:white;
-overflow-x:hidden;
-}
-
-/* صفحة الدخول */
-#login{
 height:100vh;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
+flex-direction:column;
+background:linear-gradient(180deg,#5e0019,#b3003c);
+color:white;
+font-family:'Segoe UI',sans-serif;
 text-align:center;
 }
-
-#login h1{margin-bottom:20px;}
 
 input{
 padding:12px;
 border-radius:25px;
 border:none;
-text-align:center;
 width:220px;
-margin-bottom:15px;
-font-size:16px;
+text-align:center;
+margin:15px 0;
 }
 
 button{
@@ -43,199 +34,31 @@ border-radius:25px;
 background:#ff2e74;
 color:white;
 cursor:pointer;
-font-size:16px;
-transition:0.3s;
-}
-
-button:hover{background:#ff4f8f;}
-
-.hidden{display:none;}
-
-/* الأقسام */
-.section{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:40px 20px;
-text-align:center;
-}
-
-.section h2{
-margin-bottom:25px;
-}
-
-.card{
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(15px);
-padding:25px;
-border-radius:25px;
-box-shadow:0 0 30px rgba(255,0,100,0.4);
-max-width:500px;
-width:100%;
-}
-
-/* فيديو */
-iframe{
-width:100%;
-height:220px;
-border-radius:20px;
-box-shadow:0 0 30px rgba(255,0,80,0.5);
-}
-
-/* مربعات العداد */
-.time-boxes{
-display:grid;
-grid-template-columns:repeat(2,140px);
-gap:20px;
-}
-
-.time-box{
-background:rgba(255,255,255,0.1);
-backdrop-filter:blur(15px);
-border-radius:20px;
-padding:25px;
-box-shadow:0 0 25px rgba(255,0,80,0.4);
-}
-
-.time-number{
-font-size:26px;
-font-weight:bold;
-}
-
-.time-label{
-font-size:14px;
-opacity:0.8;
-margin-top:5px;
-}
-
-/* قلوب */
-.heart{
-position:fixed;
-bottom:-10px;
-animation:float 7s linear infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(0);}
-100%{transform:translateY(-110vh);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- صفحة الدخول -->
-<div id="login">
-<h1>لولي الي بحبها بس مجننيتني ❤️</h1>
+<h1>لولي الي بحبها ❤️</h1>
 <p>اكتبي اسم بنتنا</p>
+
 <input type="password" id="pass">
-<button onclick="enterSite()">دخول 💕</button>
-</div>
-
-<div id="site" class="hidden">
-
-<!-- الفيديو -->
-<section class="section">
-<h2>🎵 أغنيتنا الخاصة</h2>
-<div class="card">
-<iframe 
-src="https://www.youtube.com/embed/pXava1lGms4?rel=0&modestbranding=1"
-frameborder="0"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-allowfullscreen>
-</iframe>
-</div>
-</section>
-
-<!-- الرسالة -->
-<section class="section">
-<h2>💌 رسالتي إلك</h2>
-<div class="card">
-كل عام وانتي عيدي ❤️ <br><br>
-وكل عام وانتي حبي ❤️ <br><br>
-وكل سنة وانتي دنيتي كلها ونبض قلبي 💕 <br><br>
-وجودك بحياتي هو أجمل هدية من رب العالمين 💖 <br><br>
-الله يخليلي ياكي ولا يحرمني منك يا أم روز ❤️
-</div>
-</section>
-
-<!-- العداد -->
-<section class="section">
-<h2>⏳ من بداية علاقتنا</h2>
-<div class="time-boxes">
-<div class="time-box">
-<div class="time-number" id="days">0</div>
-<div class="time-label">أيام</div>
-</div>
-
-<div class="time-box">
-<div class="time-number" id="hours">0</div>
-<div class="time-label">ساعات</div>
-</div>
-
-<div class="time-box">
-<div class="time-number" id="minutes">0</div>
-<div class="time-label">دقائق</div>
-</div>
-
-<div class="time-box">
-<div class="time-number" id="seconds">0</div>
-<div class="time-label">ثواني</div>
-</div>
-</div>
-</section>
-
-</div>
+<button onclick="checkPass()">دخول 💕</button>
 
 <script>
-
-/* دخول مضمون 100% */
-function enterSite(){
+function checkPass(){
 var p = document.getElementById("pass").value
 .trim()
 .replace(/\s/g,'')
 .toLowerCase();
 
 if(p === "روز"){
-document.getElementById("login").style.display="none";
-document.getElementById("site").style.display="block";
+window.location.href = "home.html";
 }else{
 alert("غلط يا قلبي ❤️");
 }
 }
-
-/* العداد */
-var startDate=new Date("June 16, 2025 00:00:00").getTime();
-
-setInterval(function(){
-var now=new Date().getTime();
-var diff=now-startDate;
-
-var d=Math.floor(diff/(1000*60*60*24));
-var h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-var m=Math.floor((diff%(1000*60*60))/(1000*60));
-var s=Math.floor((diff%(1000*60))/1000);
-
-document.getElementById("days").innerText=d;
-document.getElementById("hours").innerText=h;
-document.getElementById("minutes").innerText=m;
-document.getElementById("seconds").innerText=s;
-
-},1000);
-
-/* قلوب */
-setInterval(function(){
-var heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="💗";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(Math.random()*20+15)+"px";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),7000);
-},800);
-
 </script>
 
 </body>
