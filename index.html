@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لولي ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+
+body{
+background:linear-gradient(180deg,#7a001e,#c4003a);
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* صفحة الدخول */
+.login{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+animation:fadeIn 2s ease;
+}
+
+.heart{
+font-size:120px;
+animation:pulse 1.5s infinite;
+}
+
+input{
+padding:10px;
+border-radius:20px;
+border:none;
+text-align:center;
+margin-top:15px;
+}
+
+button{
+margin-top:10px;
+padding:10px 25px;
+border:none;
+border-radius:20px;
+background:#ff4d88;
+color:white;
+cursor:pointer;
+}
+
+.hidden{display:none;}
+
+/* الصفحة الرئيسية */
+.section{
+padding:50px 20px;
+animation:fadeIn 2s ease;
+}
+
+.section h2{
+margin-bottom:20px;
+font-size:26px;
+}
+
+.message{
+font-size:20px;
+line-height:1.8;
+}
+
+.counter{
+font-size:20px;
+margin-top:15px;
+}
+
+.love-img{
+margin-top:20px;
+max-width:300px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(255,0,80,0.6);
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.2);}
+100%{transform:scale(1);}
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+/* قلوب تطير */
+.flying-heart{
+position:fixed;
+bottom:-20px;
+color:#ffb6c1;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-110vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="login" id="login">
+<div class="heart">❤️</div>
+<h2>لولي الي بحبها بس مجننيتني</h2>
+<p>اكتبي اسم بنتنا</p>
+<input type="password" id="pass">
+<button onclick="checkPass()">دخول 💕</button>
+</div>
+
+<div id="main" class="hidden">
+
+<!-- فقرة الأغنية -->
+<div class="section">
+<h2>🎵 أغنيتنا</h2>
+<audio id="music" autoplay loop>
+<source src="PUT_YOUR_MP3_LINK_HERE.mp3" type="audio/mpeg">
+</audio>
+<p>إذا ما اشتغلت لحالها اضغطي بأي مكان ❤️</p>
+</div>
+
+<!-- فقرة الرسالة -->
+<div class="section">
+<h2>💌 رسالتي إلك</h2>
+<div class="message">
+كل عام وانتي عيدي ❤️ <br>
+وكل عام وانتي حبي ❤️ <br>
+وكل عام وانتي نبض قلبي وروحي ودنيتي كلها 💕 <br>
+وجودك بحياتي هو أجمل هدية من رب العالمين 💖
+</div>
+</div>
+
+<!-- فقرة العداد -->
+<div class="section">
+<h2>⏳ من بداية حبنا</h2>
+<div class="counter" id="counter"></div>
+</div>
+
+<!-- فقرة الصورة -->
+<div class="section">
+<h2>احبك يا دنيتي كلها ❤️</h2>
+<img src="love.jpg" class="love-img">
+</div>
+
+</div>
+
+<script>
+
+function checkPass(){
+var password=document.getElementById("pass").value;
+if(password==="روز"){
+document.getElementById("login").classList.add("hidden");
+document.getElementById("main").classList.remove("hidden");
+document.getElementById("music").play();
+}else{
+alert("غلط يا قلبي 😏");
+}
+}
+
+/* تشغيل عند أول لمس */
+document.body.addEventListener("click",function(){
+var music=document.getElementById("music");
+if(music) music.play();
+},{once:true});
+
+/* عداد من 16/6/2025 */
+var startDate=new Date("June 16, 2025 00:00:00").getTime();
+setInterval(function(){
+var now=new Date().getTime();
+var diff=now-startDate;
+
+var days=Math.floor(diff/(1000*60*60*24));
+var hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+var minutes=Math.floor((diff%(1000*60*60))/(1000*60));
+var seconds=Math.floor((diff%(1000*60))/1000);
+
+document.getElementById("counter").innerHTML=
+days+" يوم "+hours+" ساعة "+minutes+" دقيقة "+seconds+" ثانية ❤️";
+},1000);
+
+/* قلوب تطير */
+setInterval(function(){
+var heart=document.createElement("div");
+heart.className="flying-heart";
+heart.innerHTML="💗";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},500);
+
+</script>
+
+</body>
+</html>
