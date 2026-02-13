@@ -11,7 +11,7 @@
 body{
 background:linear-gradient(180deg,#5e0019,#b3003c);
 color:white;
-scroll-behavior:smooth;
+overflow-x:hidden;
 }
 
 /* صفحة الباسورد */
@@ -24,10 +24,7 @@ align-items:center;
 text-align:center;
 }
 
-#login h1{
-font-size:28px;
-margin-bottom:20px;
-}
+#login h1{font-size:26px;margin-bottom:20px;}
 
 input{
 padding:12px;
@@ -49,9 +46,7 @@ font-size:16px;
 transition:0.3s;
 }
 
-button:hover{
-background:#ff4f8f;
-}
+button:hover{background:#ff4f8f;}
 
 .hidden{display:none;}
 
@@ -67,42 +62,65 @@ text-align:center;
 }
 
 .section h2{
-font-size:30px;
-margin-bottom:20px;
+font-size:28px;
+margin-bottom:25px;
 }
 
 .card{
 background:rgba(255,255,255,0.08);
-backdrop-filter:blur(10px);
-padding:30px;
-border-radius:20px;
+backdrop-filter:blur(15px);
+padding:25px;
+border-radius:25px;
+box-shadow:0 0 30px rgba(255,0,100,0.4);
 max-width:500px;
-box-shadow:0 0 30px rgba(255,0,80,0.3);
-}
-
-.message{
-font-size:20px;
-line-height:1.8;
-}
-
-.counter{
-font-size:22px;
-margin-top:15px;
-}
-
-.love-img{
 width:100%;
-max-width:320px;
-border-radius:20px;
-margin-top:20px;
-box-shadow:0 0 25px rgba(255,0,80,0.6);
 }
 
-/* قلوب بالخلفية */
+/* فيديو */
+iframe{
+width:100%;
+height:220px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(255,0,80,0.5);
+}
+
+/* مربعات العداد */
+.time-boxes{
+display:grid;
+grid-template-columns:repeat(2,140px);
+gap:20px;
+margin-top:10px;
+}
+
+.time-box{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(15px);
+border-radius:20px;
+padding:25px;
+box-shadow:0 0 25px rgba(255,0,80,0.4);
+transition:0.3s;
+}
+
+.time-box:hover{
+transform:translateY(-5px);
+box-shadow:0 0 35px rgba(255,0,100,0.7);
+}
+
+.time-number{
+font-size:26px;
+font-weight:bold;
+}
+
+.time-label{
+font-size:14px;
+opacity:0.8;
+margin-top:5px;
+}
+
+/* قلوب */
 .heart{
 position:fixed;
 bottom:-10px;
-color:#ff6fa5;
 animation:float 7s linear infinite;
 }
 
@@ -115,7 +133,7 @@ animation:float 7s linear infinite;
 
 <body>
 
-<!-- صفحة الباسورد -->
+<!-- صفحة الدخول -->
 <div id="login">
 <h1>لولي الي بحبها بس مجننيتني ❤️</h1>
 <p>اكتبي اسم بنتنا</p>
@@ -125,24 +143,23 @@ animation:float 7s linear infinite;
 
 <div id="site" class="hidden">
 
-<!-- فقرة الأغنية -->
+<!-- قسم الفيديو -->
 <section class="section">
-<h2>🎵 عيد الحب – سلطان خليفة</h2>
+<h2>🎵 أغنيتنا الخاصة</h2>
 <div class="card">
-<p>الله يخليلي ياكي ولا يحرمني منك أم روز ❤️<br>
-كل لحظة بحياتنا معاك أحلى من اللي قبلها 💖<br>
-كل عام وانتي فرحتي وقلبي وروحي 🌹</p>
-<audio id="music" autoplay loop>
-<source src="song.mp3" type="audio/mpeg">
-</audio>
-<p>إذا ما اشتغلت اضغطي على أي مكان ❤️</p>
+<iframe 
+src="https://www.youtube.com/embed/pXava1lGms4?rel=0&modestbranding=1"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
 </div>
 </section>
 
-<!-- فقرة الرسالة -->
+<!-- قسم الرسالة -->
 <section class="section">
 <h2>💌 رسالتي إلك</h2>
-<div class="card message">
+<div class="card">
 كل عام وانتي عيدي ❤️ <br><br>
 وكل عام وانتي حبي ❤️ <br><br>
 وكل سنة وانتي دنيتي كلها ونبض قلبي 💕 <br><br>
@@ -151,37 +168,52 @@ animation:float 7s linear infinite;
 </div>
 </section>
 
-<!-- فقرة العداد -->
+<!-- قسم العداد -->
 <section class="section">
 <h2>⏳ من بداية علاقتنا</h2>
-<div class="card counter" id="counter"></div>
-</section>
 
-<!-- فقرة الصورة -->
-<section class="section">
-<h2>احبك يا دنيتي كلها ❤️</h2>
-<div class="card">
-<img src="love.jpg" class="love-img">
+<div class="time-boxes">
+<div class="time-box">
+<div class="time-number" id="days">0</div>
+<div class="time-label">أيام</div>
 </div>
+
+<div class="time-box">
+<div class="time-number" id="hours">0</div>
+<div class="time-label">ساعات</div>
+</div>
+
+<div class="time-box">
+<div class="time-number" id="minutes">0</div>
+<div class="time-label">دقائق</div>
+</div>
+
+<div class="time-box">
+<div class="time-number" id="seconds">0</div>
+<div class="time-label">ثواني</div>
+</div>
+</div>
+
 </section>
 
 </div>
 
 <script>
 
+/* دخول */
 function enterSite(){
 var p=document.getElementById("pass").value;
 if(p==="روز"){
 document.getElementById("login").classList.add("hidden");
 document.getElementById("site").classList.remove("hidden");
-document.getElementById("music").play();
 }else{
 alert("غلط يا قلبي ❤️");
 }
 }
 
-/* عداد من 16/6/2025 */
+/* العداد من 16/6/2025 */
 var startDate=new Date("June 16, 2025 00:00:00").getTime();
+
 setInterval(function(){
 var now=new Date().getTime();
 var diff=now-startDate;
@@ -191,8 +223,11 @@ var h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
 var m=Math.floor((diff%(1000*60*60))/(1000*60));
 var s=Math.floor((diff%(1000*60))/1000);
 
-document.getElementById("counter").innerHTML=
-d+" يوم "+h+" ساعة "+m+" دقيقة "+s+" ثانية ❤️";
+document.getElementById("days").innerHTML=d;
+document.getElementById("hours").innerHTML=h;
+document.getElementById("minutes").innerHTML=m;
+document.getElementById("seconds").innerHTML=s;
+
 },1000);
 
 /* قلوب تطير */
